@@ -220,8 +220,8 @@ bool posFromClipboard(Position& position, const int mapWidth /* = MAP_MAX_WIDTH 
 
 	bool done = false;
 	std::smatch matches;
-	static const std::regex expression = std::regex(R"(.*?(\d+).*?(\d+).*?(\d+).*?)", std::regex_constants::ECMAScript);
-	if (std::regex_match(input, matches, expression)) {
+	static const std::regex expression = std::regex(R"((\d+)\D+(\d+)\D+(\d+))", std::regex_constants::ECMAScript);
+	if (std::regex_search(input, matches, expression)) {
 		try {
 			const int tmpX = std::stoi(matches.str(1));
 			const int tmpY = std::stoi(matches.str(2));
